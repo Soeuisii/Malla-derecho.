@@ -4,139 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla Curricular Derecho</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
-    <style>
-        #network {
-            width: 100%;
-            height: 800px;
-            border: 1px solid lightgray;
-        }
-    </style>
 </head>
 <body>
-    <h1>Malla Curricular Derecho</h1>
+    <h1>Malla Curricular de Derecho</h1>
     <div id="network"></div>
 
-    <script>
-        const nodes = new vis.DataSet([
-            { id: 1, label: 'Derecho Romano' },
-            { id: 2, label: 'Teoría del Derecho' },
-            { id: 3, label: 'Derecho Político' },
-            { id: 4, label: 'Historia del Derecho' },
-            { id: 5, label: 'Fundamentos Filosóficos' },
-            { id: 6, label: 'Integración de Saberes 1' },
-            { id: 7, label: 'Fundamentos Teológicos' },
-            { id: 8, label: 'Derecho Económico I' },
-            { id: 9, label: 'Integración de Saberes 2' },
-
-            // Segundo Año
-            { id: 10, label: 'Derecho Civil I' },
-            { id: 11, label: 'Derecho Procesal I' },
-            { id: 12, label: 'Derecho Constitucional I' },
-            { id: 13, label: 'Derecho Económico II' },
-            { id: 14, label: 'Derecho Canónico' },
-            { id: 15, label: 'Derecho Internacional Público I' },
-            { id: 16, label: 'Integración de Saberes 3' },
-
-            { id: 17, label: 'Derecho Civil II' },
-            { id: 18, label: 'Derecho Procesal II' },
-            { id: 19, label: 'Derecho Constitucional II' },
-            { id: 20, label: 'Derecho Económico III' },
-            { id: 21, label: 'Inglés I' },
-            { id: 22, label: 'Derecho Internacional Público II' },
-            { id: 23, label: 'Seminario Jurídico I' },
-
-            // Tercer Año
-            { id: 24, label: 'Derecho Civil III' },
-            { id: 25, label: 'Derecho Procesal III' },
-            { id: 26, label: 'Derecho Administrativo I' },
-            { id: 27, label: 'Derecho del Trabajo I' },
-            { id: 28, label: 'Derecho Comercial I' },
-            { id: 29, label: 'Derecho Penal I' },
-            { id: 30, label: 'Integración de Saberes 4' },
-
-            { id: 31, label: 'Derecho Civil IV' },
-            { id: 32, label: 'Derecho Procesal IV' },
-            { id: 33, label: 'Derecho Administrativo II' },
-            { id: 34, label: 'Derecho del Trabajo II' },
-            { id: 35, label: 'Derecho Comercial II' },
-            { id: 36, label: 'Derecho Penal II' },
-            { id: 37, label: 'Seminario Jurídico II' },
-
-            // Cuarto Año
-            { id: 38, label: 'Derecho Civil V' },
-            { id: 39, label: 'Derecho Procesal V' },
-            { id: 40, label: 'Seguridad Social' },
-            { id: 41, label: 'Derecho Tributario I' },
-            { id: 42, label: 'Derecho Comercial III' },
-            { id: 43, label: 'Derecho Penal III' },
-            { id: 44, label: 'Litigación' },
-            { id: 45, label: 'Ética Profesional' },
-
-            { id: 46, label: 'Derecho Civil VI' },
-            { id: 47, label: 'Derecho Procesal VI' },
-            { id: 48, label: 'Seminario Jurídico III' },
-            { id: 49, label: 'Derecho Tributario II' },
-            { id: 50, label: 'Derecho Comercial IV' },
-            { id: 51, label: 'Derecho Penal IV' },
-            { id: 52, label: 'Optativo de Profundización' },
-
-            // Quinto Año
-            { id: 53, label: 'Práctica Profesional' },
-            { id: 54, label: 'Derecho Civil VII' },
-            { id: 55, label: 'Derecho Procesal VII' },
-            { id: 56, label: 'Anteproyecto de Investigación' },
-            { id: 57, label: 'Filosofía del Derecho' },
-            { id: 58, label: 'Derecho Internacional Privado' },
-
-            { id: 59, label: 'Derecho Civil VIII' },
-            { id: 60, label: 'Tesina' },
-            { id: 61, label: 'Optativo de Profundización 2' },
-            { id: 62, label: 'Optativo de Profundización 3' }
-        ]);
-
-        const edges = new vis.DataSet([
-            { from: 5, to: 7 },
-            { from: 7, to: 14 },
-            { from: 8, to: 13 },
-            { from: 13, to: 20 },
-            { from: 3, to: 12 },
-            { from: 12, to: 19 },
-            { from: 10, to: 17 },
-            { from: 17, to: 24 },
-            { from: 24, to: 31 },
-            { from: 31, to: 38 },
-            { from: 38, to: 46 },
-            { from: 46, to: 54 },
-            { from: 54, to: 59 },
-            { from: 59, to: 60 },
-
-            { from: 2, to: 10 },
-            { from: 1, to: 10 },
-
-            { from: 28, to: 35 },
-            { from: 35, to: 42 },
-            { from: 42, to: 50 },
-
-            { from: 29, to: 36 },
-            { from: 36, to: 43 },
-            { from: 43, to: 51 },
-
-            { from: 23, to: 37 },
-            { from: 37, to: 48 },
-
-            { from: 20, to: 41 },
-            { from: 41, to: 49 },
-
-            { from: 4, to: 57 },
-            { from: 31, to: 58 }
-        ]);
-
-        const container = document.getElementById('network');
-        const data = { nodes, edges };
-        const options = { layout: { hierarchical: false }, physics: { stabilization: true } };
-
-        new vis.Network(container, data, options);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
