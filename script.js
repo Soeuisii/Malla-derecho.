@@ -147,3 +147,4 @@ const options = {
 };
 
 new vis.Network(container, data, options);
+
